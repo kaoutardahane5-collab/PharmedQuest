@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ShieldCheck, Mail, Lock, AlertCircle, X, ArrowRight, KeyRound } from 'lucide-react';
 import { AdminUser } from '../types';
+import { loginAdmin } from '../utils/api';
 
 interface AdminLoginModalProps {
   isOpen: boolean;
@@ -30,29 +31,15 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
     setErrorMessage('');
 
     try {
-      const res = await fetch('/api/auth/admin-login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim(), password }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        if (data.error && data.error.includes("n'a encore été créé") && onTriggerSetupIfRequired) {
-          onClose();
-          onTriggerSetupIfRequired();
-          return;
-        }
-        throw new Error(data.error || 'Erreur lors de la connexion administrateur.');
-      }
-
-      localStorage.setItem('pq_admin_token', data.token);
-      localStorage.setItem('pq_admin_profile', JSON.stringify(data.admin));
-
+      const data = await loginAdmin(email.trim(), password);
       onSuccess(data.admin, data.token);
       onClose();
     } catch (err: any) {
+      if (err.message && err.message.includes("n'a encore été créé") && onTriggerSetupIfRequired) {
+        onClose();
+        onTriggerSetupIfRequired();
+        return;
+      }
       setErrorMessage(err.message || 'Échec de connexion au serveur.');
     } finally {
       setLoading(false);

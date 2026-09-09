@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ShieldCheck, Lock, User, Mail, KeyRound, Check, AlertCircle, Sparkles, ArrowRight, ShieldAlert } from 'lucide-react';
 import { Language } from '../types';
+import { setupFirstAdmin } from '../utils/api';
 
 interface FirstAdminSetupProps {
   language: Language;
@@ -35,26 +36,7 @@ export const FirstAdminSetup: React.FC<FirstAdminSetupProps> = ({
     setErrorMessage('');
 
     try {
-      const res = await fetch('/api/auth/setup-admin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim().toLowerCase(),
-          password,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Une erreur est survenue lors de l'initialisation.");
-      }
-
-      // Store admin session
-      localStorage.setItem('pq_admin_token', data.token);
-      localStorage.setItem('pq_admin_profile', JSON.stringify(data.admin));
-
+      const data = await setupFirstAdmin(name.trim(), email.trim().toLowerCase(), password);
       onAdminCreated(data.admin, data.token);
     } catch (err: any) {
       setErrorMessage(err.message || "Erreur de connexion au serveur.");

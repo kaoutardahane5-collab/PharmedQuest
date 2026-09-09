@@ -227,11 +227,15 @@ export default function App() {
             }
           }
         }
+      } catch (err) {
+        console.warn('Admin status check skipped:', err);
+      }
 
-        // 2. Fetch public content
+      // 2. Fetch public content (always attempted, with built-in fallbacks)
+      try {
         await loadDynamicContent();
       } catch (err) {
-        console.error('App init error:', err);
+        console.warn('Content loading error, using built-in curriculum:', err);
       }
     }
 
