@@ -13,9 +13,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script>
+      // Enforce trailing slash on directory URLs so relative paths (./assets/...) resolve accurately
+      (function() {
+        var l = window.location;
+        if (l.hostname.endsWith('github.io') && !l.pathname.endsWith('/') && !l.pathname.split('/').pop().includes('.')) {
+          l.replace(l.origin + l.pathname + '/' + l.search + l.hash);
+        }
+      })();
+    </script>
+    <!-- GH_PAGES_ROOT_REDIRECT_START -->
+    <script>
+      // Automatic detection: if this uncompiled root index.html is served directly on GitHub Pages
+      // (when repository Pages settings are set to Branch: main, Folder: / root),
+      // redirect immediately to the pre-compiled /docs/ bundle.
+      (function() {
+        try {
+          var isGhPages = window.location.hostname.endsWith('github.io');
+          if (isGhPages) {
+            var path = window.location.pathname.replace(/\/+$/, '');
+            if (!path.endsWith('/docs') && !path.endsWith('/dist')) {
+              window.location.replace(window.location.origin + path + '/docs/' + window.location.search + window.location.hash);
+            }
+          }
+        } catch (_) {}
+      })();
+    </script>
+    <!-- GH_PAGES_ROOT_REDIRECT_END -->
   </head>
   <body class="font-sans antialiased selection:bg-teal-500 selection:text-white">
-    <div id="root"></div>
+    <div id="root">
+      <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #042f2e; color: #f0fdf4; padding: 24px; text-align: center;">
+        <div style="width: 44px; height: 44px; border: 3px solid rgba(255,255,255,0.15); border-top-color: #2dd4bf; border-radius: 50%; animation: pq-spin 0.75s linear infinite; margin-bottom: 16px;"></div>
+        <h2 style="margin: 0 0 6px 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em;">PharmedQuest DZ</h2>
+        <p style="margin: 0; font-size: 13px; color: #99f6e4;">Chargement de la plateforme d'apprentissage...</p>
+        <style>@keyframes pq-spin { to { transform: rotate(360deg); } }</style>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

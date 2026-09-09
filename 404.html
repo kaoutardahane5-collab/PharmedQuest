@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PharmedQuest - Medical & Pharmacy Examination Prep</title>
+    <script>
+      // Single Page Apps for GitHub Pages
+      // Redirects 404 requests back to the repository base index.html
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      var repoBase = l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/');
+      // Fallback redirect
+      window.location.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        repoBase + '/?' +
+        (l.pathname.slice(repoBase.length).replace(/^[\\\/]/, '')) +
+        (l.search ? '&' + l.search.slice(1) : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body>
+    <p>Redirection en cours vers PharmedQuest...</p>
+  </body>
+</html>

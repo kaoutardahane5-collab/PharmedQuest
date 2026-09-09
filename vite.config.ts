@@ -64,10 +64,26 @@ function aistudioMediaPlugin(): Plugin {
 }
 // LINT.ThenChange(//depot/google3/java/com/google/alkali/boq/makersuite/applet_dev_service/templates/initializers/react_theme/vite.config.ts:aistudio_media_plugin)
 
-export default defineConfig(() => {
+function githubPagesPlugin(): Plugin {
   return {
-    base: './',
-    plugins: [react(), tailwindcss(), aistudioMediaPlugin()],
+    name: 'vite-plugin-github-pages',
+    transformIndexHtml(html) {
+      return html.replace(
+        /<!-- GH_PAGES_ROOT_REDIRECT_START -->[\s\S]*?<!-- GH_PAGES_ROOT_REDIRECT_END -->/,
+        ''
+      );
+    },
+  };
+}
+
+export default defineConfig(() => {
+  const repoName = process.env.GITHUB_REPOSITORY
+    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
+    : './';
+
+  return {
+    base: process.env.GITHUB_ACTIONS ? repoName : './',
+    plugins: [react(), tailwindcss(), aistudioMediaPlugin(), githubPagesPlugin()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
