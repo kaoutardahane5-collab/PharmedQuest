@@ -1,0 +1,658 @@
+{
+  "admin": null,
+  "adminTokens": {},
+  "checklist": {
+    "adminCreated": false,
+    "languagesConfigured": true,
+    "pharmacyConfigured": true,
+    "medicineConfigured": true,
+    "yearsConfigured": true,
+    "subjectsConfigured": true,
+    "lessonsConfigured": true,
+    "qcmsConfigured": true,
+    "pricingConfigured": false,
+    "settingsReviewed": false
+  },
+  "professions": [
+    {
+      "id": "pharmacy",
+      "nameFr": "Pharmacie",
+      "nameEn": "Pharmacy",
+      "subtitleFr": "Cursus universitaire de 5 ans • Préparation aux EMDs & Résidanat",
+      "subtitleEn": "5-year university curriculum • EMDs & Residency exam prep",
+      "totalYears": 5,
+      "icon": "pill",
+      "color": "from-emerald-600 to-teal-700"
+    },
+    {
+      "id": "medicine",
+      "nameFr": "Médecine",
+      "nameEn": "Medicine",
+      "subtitleFr": "Cursus universitaire de 6 ans • Préparation aux stages & Résidanat",
+      "subtitleEn": "6-year university curriculum • Clinical rotations & Residency exam prep",
+      "totalYears": 6,
+      "icon": "stethoscope",
+      "color": "from-cyan-600 to-blue-700"
+    }
+  ],
+  "academicYears": [
+    {
+      "id": "pharmacy-1",
+      "professionId": "pharmacy",
+      "yearNumber": 1,
+      "labelFr": "1ère Année Pharmacie",
+      "labelEn": "1st Year Pharmacy",
+      "descriptionFr": "Chimie générale, Biologie cellulaire, Anatomie, Mathématiques & Biophysique",
+      "descriptionEn": "General Chemistry, Cell Biology, Anatomy, Mathematics & Biophysics",
+      "modulesCount": 4
+    },
+    {
+      "id": "pharmacy-2",
+      "professionId": "pharmacy",
+      "yearNumber": 2,
+      "labelFr": "2ème Année Pharmacie",
+      "labelEn": "2nd Year Pharmacy",
+      "descriptionFr": "Chimie organique, Physiologie, Botanique médicale, Génétique",
+      "descriptionEn": "Organic Chemistry, Physiology, Medical Botany, Genetics",
+      "modulesCount": 4
+    },
+    {
+      "id": "pharmacy-3",
+      "professionId": "pharmacy",
+      "yearNumber": 3,
+      "labelFr": "3ème Année Pharmacie",
+      "labelEn": "3rd Year Pharmacy",
+      "descriptionFr": "Pharmacologie générale & spéciale, Pharmacie Galénique, Biochimie clinique",
+      "descriptionEn": "General & Special Pharmacology, Galenic Pharmacy, Clinical Biochemistry",
+      "modulesCount": 6
+    },
+    {
+      "id": "pharmacy-4",
+      "professionId": "pharmacy",
+      "yearNumber": 4,
+      "labelFr": "4ème Année Pharmacie",
+      "labelEn": "4th Year Pharmacy",
+      "descriptionFr": "Toxicologie, Chimie Thérapeutique, Microbiologie, Immunologie",
+      "descriptionEn": "Toxicology, Medicinal Chemistry, Microbiology, Immunology",
+      "modulesCount": 5
+    },
+    {
+      "id": "pharmacy-5",
+      "professionId": "pharmacy",
+      "yearNumber": 5,
+      "labelFr": "5ème Année Pharmacie",
+      "labelEn": "5th Year Pharmacy",
+      "descriptionFr": "Pharmacie clinique, Pharmacovigilance, Législation, Préparation Résidanat",
+      "descriptionEn": "Clinical Pharmacy, Pharmacovigilance, Law & Ethics, Residency prep",
+      "modulesCount": 5
+    },
+    {
+      "id": "medicine-1",
+      "professionId": "medicine",
+      "yearNumber": 1,
+      "labelFr": "1ère Année Médecine",
+      "labelEn": "1st Year Medicine",
+      "descriptionFr": "Anatomie descriptive, Embryologie, Histologie, Chimie & Biophysique",
+      "descriptionEn": "Descriptive Anatomy, Embryology, Histology, Chemistry & Biophysics",
+      "modulesCount": 4
+    },
+    {
+      "id": "medicine-2",
+      "professionId": "medicine",
+      "yearNumber": 2,
+      "labelFr": "2ème Année Médecine",
+      "labelEn": "2nd Year Medicine",
+      "descriptionFr": "Physiologie générale, Anatomie pathologique, Sémiologie médicale",
+      "descriptionEn": "General Physiology, Histopathology, Medical Semioclinic",
+      "modulesCount": 4
+    },
+    {
+      "id": "medicine-3",
+      "professionId": "medicine",
+      "yearNumber": 3,
+      "labelFr": "3ème Année Médecine",
+      "labelEn": "3rd Year Medicine",
+      "descriptionFr": "Cardiologie, Pneumologie, Gastro-entérologie, Néphrologie, Hématologie",
+      "descriptionEn": "Cardiology, Pulmonology, Gastroenterology, Nephrology, Hematology",
+      "modulesCount": 6
+    },
+    {
+      "id": "medicine-4",
+      "professionId": "medicine",
+      "yearNumber": 4,
+      "labelFr": "4ème Année Médecine",
+      "labelEn": "4th Year Medicine",
+      "descriptionFr": "Neurologie, Maladies infectieuses, Endocrinologie, Rhumatologie",
+      "descriptionEn": "Neurology, Infectious Diseases, Endocrinology, Rheumatology",
+      "modulesCount": 5
+    },
+    {
+      "id": "medicine-5",
+      "professionId": "medicine",
+      "yearNumber": 5,
+      "labelFr": "5ème Année Médecine",
+      "labelEn": "5th Year Medicine",
+      "descriptionFr": "Pédiatrie, Gynécologie-Obstétrique, Psychiatrie, Dermatologie",
+      "descriptionEn": "Pediatrics, Gynecology-Obstetrics, Psychiatry, Dermatology",
+      "modulesCount": 5
+    },
+    {
+      "id": "medicine-6",
+      "professionId": "medicine",
+      "yearNumber": 6,
+      "labelFr": "6ème Année Médecine",
+      "labelEn": "6th Year Medicine",
+      "descriptionFr": "Urgences, Réanimation, Médecine légale, Synthèse clinique & Résidanat",
+      "descriptionEn": "Emergency Medicine, Intensive Care, Forensic Medicine, Residency Synthesis",
+      "modulesCount": 5
+    }
+  ],
+  "modules": [
+    {
+      "id": "pharm-3-pharmacology",
+      "academicYearId": "pharmacy-3",
+      "professionId": "pharmacy",
+      "yearNumber": 3,
+      "titleFr": "Pharmacologie",
+      "titleEn": "Pharmacology",
+      "code": "PHARM-301",
+      "icon": "pill",
+      "color": "teal",
+      "descriptionFr": "Pharmacodynamie, AINS, antibiotiques, cardiovasculaire et système nerveux.",
+      "descriptionEn": "Pharmacodynamics, NSAIDs, antibiotics, cardiovascular, and nervous system.",
+      "lessonsCount": 5,
+      "questionCount": 140,
+      "isPopular": true
+    },
+    {
+      "id": "pharm-3-galenic",
+      "academicYearId": "pharmacy-3",
+      "professionId": "pharmacy",
+      "yearNumber": 3,
+      "titleFr": "Pharmacie Galénique",
+      "titleEn": "Galenic Pharmacy",
+      "code": "PHARM-302",
+      "icon": "flask",
+      "color": "emerald",
+      "descriptionFr": "Formes pharmaceutiques, biodisponibilité, comprimés, injectables et stérilisation.",
+      "descriptionEn": "Pharmaceutical dosage forms, bioavailability, tablets, parenterals, and sterilization.",
+      "lessonsCount": 4,
+      "questionCount": 95
+    },
+    {
+      "id": "pharm-3-biochem",
+      "academicYearId": "pharmacy-3",
+      "professionId": "pharmacy",
+      "yearNumber": 3,
+      "titleFr": "Biochimie Clinique",
+      "titleEn": "Clinical Biochemistry",
+      "code": "PHARM-303",
+      "icon": "dna",
+      "color": "sky",
+      "descriptionFr": "Métabolisme glucidique, lipidique, protéique et enzymologie clinique.",
+      "descriptionEn": "Carbohydrate, lipid, and protein metabolism, and clinical enzymology.",
+      "lessonsCount": 4,
+      "questionCount": 88
+    },
+    {
+      "id": "pharm-3-semiologie",
+      "academicYearId": "pharmacy-3",
+      "professionId": "pharmacy",
+      "yearNumber": 3,
+      "titleFr": "Sémiologie Médicale",
+      "titleEn": "Medical Semioclinic",
+      "code": "PHARM-304",
+      "icon": "activity",
+      "color": "amber",
+      "descriptionFr": "Signes cliniques, examens physiques et diagnostics biologiques.",
+      "descriptionEn": "Clinical signs, physical examination, and biological diagnostics.",
+      "lessonsCount": 3,
+      "questionCount": 72
+    },
+    {
+      "id": "pharm-4-toxicology",
+      "academicYearId": "pharmacy-4",
+      "professionId": "pharmacy",
+      "yearNumber": 4,
+      "titleFr": "Toxicologie",
+      "titleEn": "Toxicology",
+      "code": "PHARM-401",
+      "icon": "shield-alert",
+      "color": "rose",
+      "descriptionFr": "Toxiques gazeux, métaux lourds, pesticides, drogues et toxicologie d urgence.",
+      "descriptionEn": "Gaseous poisons, heavy metals, pesticides, illicit drugs, and emergency tox.",
+      "lessonsCount": 4,
+      "questionCount": 110,
+      "isPopular": true
+    },
+    {
+      "id": "pharm-4-chimie-therap",
+      "academicYearId": "pharmacy-4",
+      "professionId": "pharmacy",
+      "yearNumber": 4,
+      "titleFr": "Chimie Thérapeutique",
+      "titleEn": "Medicinal Chemistry",
+      "code": "PHARM-402",
+      "icon": "atom",
+      "color": "indigo",
+      "descriptionFr": "Relations structure-activité, synthèse et métabolisme des principes actifs.",
+      "descriptionEn": "Structure-activity relationships, synthesis, and metabolic pathways of active drugs.",
+      "lessonsCount": 4,
+      "questionCount": 85
+    },
+    {
+      "id": "med-3-cardio",
+      "academicYearId": "medicine-3",
+      "professionId": "medicine",
+      "yearNumber": 3,
+      "titleFr": "Cardiologie",
+      "titleEn": "Cardiology",
+      "code": "MED-301",
+      "icon": "heart-pulse",
+      "color": "rose",
+      "descriptionFr": "Insuffisance cardiaque, HTA, Syndromes coronariens aigus et Valvulopathies.",
+      "descriptionEn": "Heart failure, Hypertension, Acute coronary syndromes, and Valvulopathies.",
+      "lessonsCount": 5,
+      "questionCount": 165,
+      "isPopular": true
+    },
+    {
+      "id": "med-3-pneumo",
+      "academicYearId": "medicine-3",
+      "professionId": "medicine",
+      "yearNumber": 3,
+      "titleFr": "Pneumologie",
+      "titleEn": "Pulmonology",
+      "code": "MED-302",
+      "icon": "wind",
+      "color": "cyan",
+      "descriptionFr": "Asthme, BPCO, Pneumopathies infectieuses et Tuberculose pulmonaire.",
+      "descriptionEn": "Asthma, COPD, Community-acquired pneumonia, and Pulmonary tuberculosis.",
+      "lessonsCount": 4,
+      "questionCount": 120,
+      "isPopular": true
+    },
+    {
+      "id": "med-3-gastro",
+      "academicYearId": "medicine-3",
+      "professionId": "medicine",
+      "yearNumber": 3,
+      "titleFr": "Gastro-Entérologie",
+      "titleEn": "Gastroenterology",
+      "code": "MED-303",
+      "icon": "utensils",
+      "color": "amber",
+      "descriptionFr": "Ulcère gastro-duodénal, Cirrhose, Hépatites et Hémorragies digestives.",
+      "descriptionEn": "Peptic ulcer disease, Liver cirrhosis, Viral hepatitis, and GI bleedings.",
+      "lessonsCount": 4,
+      "questionCount": 95
+    },
+    {
+      "id": "med-3-nephro",
+      "academicYearId": "medicine-3",
+      "professionId": "medicine",
+      "yearNumber": 3,
+      "titleFr": "Néphrologie",
+      "titleEn": "Nephrology",
+      "code": "MED-304",
+      "icon": "droplets",
+      "color": "blue",
+      "descriptionFr": "Insuffisance rénale aiguë et chronique, Néphropathies glomérulaires.",
+      "descriptionEn": "Acute kidney injury, Chronic kidney disease, Glomerulopathies.",
+      "lessonsCount": 3,
+      "questionCount": 80
+    }
+  ],
+  "lessons": [
+    {
+      "id": "pharm-3-pharmaco-nsaid",
+      "moduleId": "pharm-3-pharmacology",
+      "titleFr": "Anti-inflammatoires Non Stéroïdiens (AINS) & Corticoïdes",
+      "titleEn": "Non-Steroidal Anti-Inflammatory Drugs (NSAIDs) & Corticosteroids",
+      "questionCount": 28,
+      "estimatedMinutes": 25,
+      "downloadSize": "1.4 MB",
+      "isDownloaded": true,
+      "order": 1
+    },
+    {
+      "id": "pharm-3-pharmaco-antibiotics",
+      "moduleId": "pharm-3-pharmacology",
+      "titleFr": "Antibiotiques : Bêta-lactamines, Aminosides & Macrolides",
+      "titleEn": "Antibiotics: Beta-lactams, Aminoglycosides & Macrolides",
+      "questionCount": 35,
+      "estimatedMinutes": 30,
+      "downloadSize": "2.1 MB",
+      "isDownloaded": true,
+      "order": 2
+    },
+    {
+      "id": "pharm-3-pharmaco-cardio",
+      "moduleId": "pharm-3-pharmacology",
+      "titleFr": "Médicaments du Système Cardiovasculaire (Bêta-bloquants, IEC, ARA-II)",
+      "titleEn": "Cardiovascular Pharmacology (Beta-blockers, ACE inhibitors, ARBs)",
+      "questionCount": 32,
+      "estimatedMinutes": 30,
+      "downloadSize": "1.8 MB",
+      "isDownloaded": false,
+      "order": 3
+    },
+    {
+      "id": "pharm-3-pharmaco-nervous",
+      "moduleId": "pharm-3-pharmacology",
+      "titleFr": "Système Nerveux Autonome (Sympathomimétiques & Parasympatholytiques)",
+      "titleEn": "Autonomic Nervous System (Sympathomimetics & Anticholinergics)",
+      "questionCount": 24,
+      "estimatedMinutes": 20,
+      "downloadSize": "1.2 MB",
+      "isDownloaded": false,
+      "order": 4
+    },
+    {
+      "id": "pharm-3-pharmaco-pk",
+      "moduleId": "pharm-3-pharmacology",
+      "titleFr": "Pharmacocinétique Fondamentale (ADME, Clairance, Demi-vie)",
+      "titleEn": "Fundamental Pharmacokinetics (ADME, Clearance, Half-life)",
+      "questionCount": 21,
+      "estimatedMinutes": 20,
+      "downloadSize": "1.1 MB",
+      "isDownloaded": false,
+      "order": 5
+    },
+    {
+      "id": "med-3-cardio-heart-failure",
+      "moduleId": "med-3-cardio",
+      "titleFr": "Insuffisance Cardiaque Aiguë & Chronique",
+      "titleEn": "Acute & Chronic Heart Failure",
+      "questionCount": 35,
+      "estimatedMinutes": 30,
+      "downloadSize": "2.4 MB",
+      "isDownloaded": true,
+      "order": 1
+    },
+    {
+      "id": "med-3-cardio-sca",
+      "moduleId": "med-3-cardio",
+      "titleFr": "Syndromes Coronariens Aigus (SCA ST+ et ST-)",
+      "titleEn": "Acute Coronary Syndromes (STEMI and NSTEMI)",
+      "questionCount": 40,
+      "estimatedMinutes": 35,
+      "downloadSize": "2.6 MB",
+      "isDownloaded": true,
+      "order": 2
+    },
+    {
+      "id": "med-3-cardio-hta",
+      "moduleId": "med-3-cardio",
+      "titleFr": "Hypertension Artérielle de l Adulte (HTA essentielle & secondaire)",
+      "titleEn": "Adult Arterial Hypertension (Essential & Secondary)",
+      "questionCount": 30,
+      "estimatedMinutes": 25,
+      "downloadSize": "1.7 MB",
+      "isDownloaded": false,
+      "order": 3
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-pharm-nsaid-01",
+      "lessonId": "pharm-3-pharmaco-nsaid",
+      "moduleId": "pharm-3-pharmacology",
+      "facultySource": "Faculté de Médecine et Pharmacie d Alger - Concours de Résidanat 2023",
+      "examYear": 2023,
+      "questionTextFr": "Concernant les Anti-inflammatoires Non Stéroïdiens (AINS) classiques (inhibiteurs non sélectifs des COX), quelle est la proposition EXACTE ?",
+      "questionTextEn": "Regarding classic Non-Steroidal Anti-Inflammatory Drugs (non-selective COX inhibitors), which of the following statements is CORRECT?",
+      "optionsFr": [
+        "Ils stimulent la synthèse de la prostaglandine E2 (PGE2) au niveau de la muqueuse gastrique.",
+        "Leur action analgésique et antipyrétique est principalement liée à l inhibition de la COX-2 inductible.",
+        "Ils sont formellement recommandés au cours du troisième trimestre de la grossesse.",
+        "Ils augmentent la filtration glomérulaire par vasodilatation de l artériole afférente rénale.",
+        "Ils n induisent aucune interaction avec les anticoagulants oraux antivitamine K (AVK)."
+      ],
+      "optionsEn": [
+        "They stimulate the synthesis of prostaglandin E2 (PGE2) in the gastric mucosa.",
+        "Their analgesic and antipyretic efficacy is predominantly linked to the inhibition of inducible COX-2.",
+        "They are formally recommended during the third trimester of pregnancy.",
+        "They increase glomerular filtration by vasodilating the renal afferent arteriole.",
+        "They do not interact with vitamin K antagonist (VKA) oral anticoagulants."
+      ],
+      "correctOptionIndexes": [
+        1
+      ],
+      "isMultipleChoice": false,
+      "explanationFr": "L effet thérapeutique anti-inflammatoire et antipyrétique est principalement dû à l inhibition de la COX-2 (inductible lors de l inflammation), tandis que les effets indésirables gastriques et rénaux résultent de l inhibition de la COX-1 constitutive (cytoprotectrice). Les AINS sont formellement contre-indiqués à partir du début du 6ème mois (24 SA) en raison du risque de fermeture prématurée du canal artériel et d insuffisance rénale fœtale.",
+      "explanationEn": "The anti-inflammatory and antipyretic therapeutic actions are mainly driven by inhibiting inducible COX-2, whereas gastrointestinal and renal toxicities arise from inhibiting constitutive COX-1. NSAIDs are strictly contraindicated from the 24th gestational week due to risks of premature closure of the fetal ductus arteriosus and neonatal renal failure.",
+      "difficulty": "medium",
+      "comments": [
+        {
+          "id": "c1",
+          "userName": "Kamel B. (Résident Alger)",
+          "userAvatar": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=120&q=80",
+          "faculty": "Faculté d Alger",
+          "text": "Piège classique de résidanat : la contre-indication absolue au 3ème trimestre tombe quasiment chaque année !",
+          "timestamp": "Il y a 2 jours"
+        },
+        {
+          "id": "c2",
+          "userName": "Sara T.",
+          "userAvatar": "https://images.unsplash.com/photo-1594824813596-f5290b21fa75?auto=format&fit=crop&w=120&q=80",
+          "faculty": "Faculté d Oran",
+          "text": "Attention aussi à l interaction AINS + IEC qui précipite l insuffisance rénale aiguë fonctionnelle.",
+          "timestamp": "Hier"
+        }
+      ],
+      "isDraft": false,
+      "isDeleted": false,
+      "createdAt": "2024-01-01"
+    },
+    {
+      "id": "q-pharm-nsaid-02",
+      "lessonId": "pharm-3-pharmaco-nsaid",
+      "moduleId": "pharm-3-pharmacology",
+      "facultySource": "Faculté de Pharmacie d Oran - EMD Pharmacologie 2022",
+      "examYear": 2022,
+      "questionTextFr": "L acide acétylsalicylique (Aspirine) à faible dose (75 à 160 mg/jour) exerce un effet antiagrégant plaquettaire prolongé. Quel mécanisme moléculaire explique la durée de cet effet ?",
+      "questionTextEn": "Low-dose acetylsalicylic acid (Aspirin 75-160 mg/day) exerts a prolonged antiplatelet effect. Which molecular mechanism explains the duration of this effect?",
+      "optionsFr": [
+        "L inhibition réversible et compétitive de la prostacycline synthétase endothéliale.",
+        "L acétylation irréversible de la sérine 529 de la COX-1 plaquettaire, anucléée et incapable de resynthétiser l enzyme.",
+        "Le blocage direct et irréversible des récepteurs P2Y12 de l adénosine diphosphate (ADP).",
+        "L induction d une synthèse accrue de thromboxane A2 (TXA2) au niveau vasculaire.",
+        "Une liaison covalente irréversible avec le complexe glycoprotéique GPIIb/IIIa."
+      ],
+      "optionsEn": [
+        "Reversible and competitive inhibition of endothelial prostacyclin synthetase.",
+        "Irreversible acetylation of Serine 529 of platelet COX-1, which lack nuclei and cannot resynthesize the enzyme.",
+        "Direct irreversible antagonism of adenosine diphosphate (ADP) P2Y12 receptors.",
+        "Induction of increased thromboxane A2 (TXA2) synthesis in vascular beds.",
+        "Irreversible covalent binding to the glycoprotein GPIIb/IIIa complex."
+      ],
+      "correctOptionIndexes": [
+        1
+      ],
+      "isMultipleChoice": false,
+      "explanationFr": "L aspirine acétyle de manière irréversible le résidu Sérine 529 de la COX-1. Comme les plaquettes sont des fragments cellulaires dépourvus de noyau, elles ne peuvent pas synthétiser de nouvelles molécules de COX-1. L effet antiagrégant persiste donc toute la durée de vie des plaquettes (7 à 10 jours).",
+      "explanationEn": "Aspirin irreversibly acetylates the Serine 529 residue of COX-1. Because platelets lack a nucleus, they cannot synthesize new proteins or enzymes; therefore, TXA2 production is blocked for the entire lifespan of the platelet (7-10 days).",
+      "difficulty": "easy",
+      "comments": [],
+      "isDraft": false,
+      "isDeleted": false,
+      "createdAt": "2024-01-01"
+    },
+    {
+      "id": "q-pharm-antibio-01",
+      "lessonId": "pharm-3-pharmaco-antibiotics",
+      "moduleId": "pharm-3-pharmacology",
+      "facultySource": "Faculté de Médecine de Constantine - Résidanat 2021",
+      "examYear": 2021,
+      "questionTextFr": "Parmi les associations antibiotiques suivantes, laquelle permet de surmonter la résistance bactérienne par production de pénicillinase chez Staphylococcus aureus sécréteur ?",
+      "questionTextEn": "Among the following antibiotic regimens, which one successfully overcomes bacterial resistance driven by penicillinase production in penicillinase-producing Staphylococcus aureus?",
+      "optionsFr": [
+        "Amoxicilline + Acide clavulanique",
+        "Ampicilline + Gentamicine",
+        "Ticarcilline + Colistine",
+        "Pénicilline G + Streptomycine",
+        "Céfotaxime + Vancomycine"
+      ],
+      "optionsEn": [
+        "Amoxicillin + Clavulanic acid",
+        "Ampicillin + Gentamicin",
+        "Ticarcillin + Colistin",
+        "Penicillin G + Streptomycin",
+        "Cefotaxime + Vancomycin"
+      ],
+      "correctOptionIndexes": [
+        0
+      ],
+      "isMultipleChoice": false,
+      "explanationFr": "L acide clavulanique est un inhibiteur suicide des bêta-lactamases (pénicillinases). En s associant à l amoxicilline, il protège le noyau bêta-lactame de l hydrolyse enzymatique bactérienne, restaurant ainsi le spectre antimicrobien.",
+      "explanationEn": "Clavulanic acid acts as a suicide inhibitor of beta-lactamases (penicillinases). By combining it with amoxicillin, it prevents enzymatic hydrolysis of the beta-lactam core, thereby restoring antibiotic efficacy against beta-lactamase-producing strains.",
+      "difficulty": "easy",
+      "comments": [],
+      "isDraft": false,
+      "isDeleted": false,
+      "createdAt": "2024-01-01"
+    },
+    {
+      "id": "q-med-cardio-01",
+      "lessonId": "med-3-cardio-heart-failure",
+      "moduleId": "med-3-cardio",
+      "facultySource": "Faculté de Médecine d Alger - Concours de Résidanat 2023",
+      "examYear": 2023,
+      "questionTextFr": "Dans l insuffisance cardiaque chronique à fraction d éjection réduite (IC-FEr < 40%), quel groupe thérapeutique fait partie des « 4 fantastiques » (quadrithérapie recommandée classe I) réduisant la mortalité globale ?",
+      "questionTextEn": "In chronic heart failure with reduced ejection fraction (HFrEF < 40%), which pharmacological class represents one of the foundational \"four pillars\" (Class I recommendation) proven to reduce all-cause mortality?",
+      "optionsFr": [
+        "Inhibiteurs calciques dihydropyridiniques (ex: Amlodipine)",
+        "Inhibiteurs des SGLT2 (gliflozines, ex: Dapagliflozine ou Empagliflozine)",
+        "Dérivés nitrés à libération prolongée",
+        "Digitaliques (Digoxine)",
+        "Diurétiques de l anse à forte dose en monothérapie"
+      ],
+      "optionsEn": [
+        "Dihydropyridine calcium channel blockers (e.g., Amlodipine)",
+        "SGLT2 inhibitors (gliflozins, e.g., Dapagliflozin or Empagliflozin)",
+        "Long-acting oral nitrates",
+        "Cardiac glycosides (Digoxin)",
+        "High-dose loop diuretics in monotherapy"
+      ],
+      "correctOptionIndexes": [
+        1
+      ],
+      "isMultipleChoice": false,
+      "explanationFr": "Les 4 piliers majeurs de l IC-FEr selon les recommandations internationales (ESC/AHA) et nationales sont : 1) Les Bêta-bloquants (Bisoprolol, Carvédilol, Métoprolol) ; 2) Les ARNI (Sacubitril/Valsartan) ou IEC ; 3) Les Antagonistes des récepteurs des minéralocorticoïdes (Spironolactone/Éplérénone) ; 4) Les Inhibiteurs des SGLT2 (Dapagliflozine/Empagliflozine). Ces 4 classes diminuent significativement les hospitalisations et la mortalité cardiovasculaire.",
+      "explanationEn": "The 4 foundational pillars for HFrEF according to international (ESC) guidelines are: 1) Beta-blockers; 2) ARNI (Sacubitril/Valsartan) or ACE inhibitors; 3) Mineralocorticoid receptor antagonists (Spironolactone/Eplerenone); 4) SGLT2 inhibitors (Dapagliflozin/Empagliflozin). All four significantly lower mortality and cardiovascular hospitalizations.",
+      "difficulty": "medium",
+      "comments": [
+        {
+          "id": "c3",
+          "userName": "Dr. Mehdi (Cardiologue Résident)",
+          "userAvatar": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=120&q=80",
+          "faculty": "CHU Mustapha Bacha Alger",
+          "text": "Nouveau standard absolu au résidanat : la quadrithérapie doit être connue sur le bout des doigts.",
+          "timestamp": "Il y a 3 jours"
+        }
+      ],
+      "isDraft": false,
+      "isDeleted": false,
+      "createdAt": "2024-01-01"
+    },
+    {
+      "id": "q-med-cardio-02",
+      "lessonId": "med-3-cardio-sca",
+      "moduleId": "med-3-cardio",
+      "facultySource": "Faculté de Médecine d Annaba - EMD Cardiologie 2023",
+      "examYear": 2023,
+      "questionTextFr": "Devant un patient de 55 ans consultant pour douleur thoracique rétro-sternale constrictive irradiant au bras gauche évoluant depuis 90 minutes, l ECG montre un sus-décalage persistant du segment ST de 3 mm en DII, DIII, aVF avec image en miroir en DI, aVL. Quel est le diagnostic et la prise en charge immédiate prioritaire ?",
+      "questionTextEn": "A 55-year-old male presents with 90 minutes of retrosternal crushing chest pain radiating to the left arm. ECG shows persistent ST-segment elevation of 3 mm in leads II, III, aVF with reciprocal depression in leads I, aVL. What is the diagnosis and highest-priority immediate management?",
+      "optionsFr": [
+        "Infarctus du myocarde inférieur (STEMI) : Débuter immédiatement une double antiagrégation, anticoagulation et coronarographie urgente (angioplastie primaire).",
+        "Péricardite aiguë bénigne : Prescrire Aspirine 1g x 3/jour et Colchicine.",
+        "Angor instable : Réaliser un dosage des troponines et attendre le résultat à H+3 avant tout geste invasif.",
+        "Dissection aortique aiguë de type B : Administrer immédiatement des thrombolytiques intraveineux.",
+        "Spasme coronarien d Prinzmetal : Traiter uniquement par dérivés nitrés sublinguaux sans surveillance."
+      ],
+      "optionsEn": [
+        "Inferior myocardial infarction (STEMI): Immediately initiate dual antiplatelet therapy, anticoagulation, and urgent coronary angiography (primary PCI).",
+        "Acute benign pericarditis: Prescribe Aspirin 1g TID and Colchicine.",
+        "Unstable angina: Order high-sensitivity troponins and wait 3 hours before invasive stratagems.",
+        "Type B aortic dissection: Immediately infuse systemic thrombolytics.",
+        "Prinzmetal variant angina: Treat exclusively with sublingual nitrates without monitoring."
+      ],
+      "correctOptionIndexes": [
+        0
+      ],
+      "isMultipleChoice": false,
+      "explanationFr": "Le sus-décalage persistant du segment ST en DII, DIII, aVF avec miroir en DI, aVL signe une occlusion coronaire aiguë de la paroi inférieure (territoire de l artère coronaire droite ou circonflexe). C est une urgence absolue nécessitant réperfusion myocardique en extrême urgence par angioplastie primaire (délai < 120 min) associée à la DAPT (Aspirine + Ticagrélor ou Prasugrel) et héparine.",
+      "explanationEn": "Persistent ST-segment elevation in leads II, III, aVF with reciprocal ST-depression in leads I, aVL establishes acute inferior STEMI (usually right coronary artery occlusion). It is an emergency requiring immediate reperfusion (primary PCI within 120 min) alongside dual antiplatelet therapy and therapeutic anticoagulation.",
+      "difficulty": "hard",
+      "comments": [],
+      "isDraft": false,
+      "isDeleted": false,
+      "createdAt": "2024-01-01"
+    }
+  ],
+  "reportedQuestions": [
+    {
+      "id": "rep-1",
+      "questionId": "q-med-cardio-01",
+      "studentName": "Dr. Sarah M. (Résidente R1)",
+      "reason": "Mise à jour des consensus",
+      "suggestion": "Selon la mise à jour ESC 2023, la dapagliflozine ou empagliflozine (iSGLT2) est désormais en recommandation IA pour toute FEVG réduite sans délai.",
+      "timestamp": "2024-10-12",
+      "status": "pending"
+    },
+    {
+      "id": "rep-2",
+      "questionId": "q-pharma-ains-02",
+      "studentName": "Yacine B. (5ème Année)",
+      "reason": "Orthographe & Clarté",
+      "suggestion": "Proposition B : Préciser syndrome de Reye pédiatrique pour l aspirine.",
+      "timestamp": "2024-10-09",
+      "status": "approved"
+    }
+  ],
+  "suggestedQuestions": [
+    {
+      "id": "sug-1",
+      "studentName": "Dr. Mehdi Slimani (Résident R2)",
+      "studentEmail": "mehdi.slimani@univ-alger.dz",
+      "professionId": "medicine",
+      "academicYearId": "med_y6",
+      "moduleId": "mod_med_cardio",
+      "lessonId": "les_med_cardio_1",
+      "questionText": "Quel est le délai maximal recommandé pour réaliser une angioplastie primaire (PCI) après premier contact médical dans le STEMI ?",
+      "options": [
+        "Dans les 60 minutes",
+        "Dans les 120 minutes (2 heures)",
+        "Dans les 24 heures",
+        "Dans les 48 heures",
+        "Uniquement après fibrinolyse systématique"
+      ],
+      "correctIndexes": [
+        1
+      ],
+      "explanation": "Selon les recommandations ESC de prise en charge du syndrome coronarien avec sus-décalage de ST, le délai premier contact médical - ballonnet doit être inférieur à 120 minutes.",
+      "facultySource": "Faculté de Médecine d'Alger - EMD Urgences",
+      "difficulty": "medium",
+      "isMultipleChoice": false,
+      "timestamp": "2024-10-18",
+      "status": "pending"
+    }
+  ],
+  "subscriptionConfig": {
+    "yearlyPriceDZD": 2500,
+    "monthlyPriceDZD": 500,
+    "freeTrialDays": 7,
+    "ccpNumber": "0023489123",
+    "ccpKey": "45",
+    "ccpHolder": "PharmedQuest Education Algérie",
+    "baridiMobRip": "00799999002348912345",
+    "baridiMobPhone": "+213 555 12 34 56",
+    "activeAnnouncementFr": "📢 Concours de Résidanat 2024 : 150 nouveaux QCMs officiels d'Alger et d'Oran viennent d'être ajoutés !",
+    "activeAnnouncementEn": "📢 Residency Exam 2024: 150 new official MCQs from Algiers & Oran faculties have been added!",
+    "announcementEnabled": true
+  },
+  "announcement": "📢 Plateforme PharmedQuest Algérie : La banque de QCMs officiels de résidanat et d'EMD est à jour !",
+  "enrolledStudentsCount": 10482,
+  "quizzesCompletedCount": 48920
+}

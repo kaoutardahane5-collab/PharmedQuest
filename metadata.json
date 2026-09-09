@@ -1,0 +1,6 @@
+{
+  "name": "PharmedQuest",
+  "description": "Professional medical and pharmacy educational platform for university exam and residency preparation with authentic MCQs, AI tutor, live study rooms, and progress tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
