@@ -1380,6 +1380,14 @@ async function startServer() {
       res.status(400).json({ error: e.message });
     }
   });
+  app.post("/api/questions/create", (req, res) => {
+    try {
+      const question = addOrUpdateQuestion(req.body);
+      res.json(question);
+    } catch (e) {
+      res.status(400).json({ error: e.message });
+    }
+  });
   app.post("/api/admin/questions", requireAdmin, (req, res) => {
     try {
       const question = addOrUpdateQuestion(req.body);

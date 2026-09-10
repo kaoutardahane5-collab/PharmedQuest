@@ -19,7 +19,8 @@ import {
   Play, 
   Clock, 
   HelpCircle,
-  RotateCcw
+  RotateCcw,
+  PlusCircle
 } from 'lucide-react';
 
 interface HierarchyNavigationProps {
@@ -41,6 +42,7 @@ interface HierarchyNavigationProps {
   onStartQuiz: () => void;
   onResetToStep: (step: 'profession' | 'year' | 'module' | 'lesson') => void;
   onDownloadLesson: (lessonId: string) => void;
+  onOpenNewQCM?: () => void;
 }
 
 export const HierarchyNavigation: React.FC<HierarchyNavigationProps> = ({
@@ -62,6 +64,7 @@ export const HierarchyNavigation: React.FC<HierarchyNavigationProps> = ({
   onStartQuiz,
   onResetToStep,
   onDownloadLesson,
+  onOpenNewQCM,
 }) => {
   const t = translations[language];
 
@@ -192,6 +195,41 @@ export const HierarchyNavigation: React.FC<HierarchyNavigationProps> = ({
           </div>
         </div>
       </div>
+
+      {/* CASE POUR AJOUTER UN NOUVEAU QCM */}
+      {onOpenNewQCM && (
+        <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-teal-500/40 bg-gradient-to-r from-slate-900/95 via-teal-950/40 to-slate-900/95 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-teal-400">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-teal-500 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-teal-500/25 shrink-0">
+              <PlusCircle className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm sm:text-base font-bold text-white">
+                  {language === 'fr' ? 'Case de Rédaction : Ajouter un Nouveau QCM' : 'Case: Add a New MCQ Question'}
+                </h3>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/40">
+                  {language === 'fr' ? '+ Nouveau QCM' : '+ New MCQ'}
+                </span>
+              </div>
+              <p className="text-xs text-slate-300 dark:text-slate-400 mt-0.5 max-w-2xl">
+                {language === 'fr' 
+                  ? "Vous disposez d'un nouveau QCM d'examen ou d'annales de résidanat ? Cliquez sur cette case pour saisir l'énoncé, les propositions A-B-C-D-E et le corrigé officiel." 
+                  : 'Have an official exam or residency question? Click this box to input the statement, choices, and detailed answer key.'}
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={onOpenNewQCM}
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-teal-500/20 flex items-center justify-center gap-2 active:scale-[0.98] transition-all whitespace-nowrap"
+          >
+            <PlusCircle className="w-4 h-4" />
+            <span>{language === 'fr' ? 'Ajouter un QCM' : 'Add MCQ'}</span>
+          </button>
+        </div>
+      )}
 
       {/* STEP 1: Select Profession */}
       {currentStep === 1 && (
@@ -509,13 +547,26 @@ export const HierarchyNavigation: React.FC<HierarchyNavigationProps> = ({
               </span>
             </div>
 
-            <button
-              onClick={onStartQuiz}
-              className="w-full sm:w-auto bg-gradient-to-r from-teal-700 to-cyan-600 hover:from-teal-800 hover:to-cyan-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 text-sm"
-            >
-              <Play className="w-4 h-4 fill-current" />
-              <span>{t.startQuiz}</span>
-            </button>
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+              {onOpenNewQCM && (
+                <button
+                  type="button"
+                  onClick={onOpenNewQCM}
+                  className="w-full sm:w-auto px-4 py-3 rounded-xl border border-teal-500/40 text-teal-300 hover:text-white hover:bg-teal-950/50 hover:border-teal-400 font-semibold text-xs transition-all flex items-center justify-center gap-2"
+                >
+                  <PlusCircle className="w-4 h-4 text-teal-400" />
+                  <span>{language === 'fr' ? '+ Ajouter un QCM à ce cours' : '+ Add MCQ to this lecture'}</span>
+                </button>
+              )}
+
+              <button
+                onClick={onStartQuiz}
+                className="w-full sm:w-auto bg-gradient-to-r from-teal-700 to-cyan-600 hover:from-teal-800 hover:to-cyan-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 text-sm"
+              >
+                <Play className="w-4 h-4 fill-current" />
+                <span>{t.startQuiz}</span>
+              </button>
+            </div>
           </div>
         </section>
       )}

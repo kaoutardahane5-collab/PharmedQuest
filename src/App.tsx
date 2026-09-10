@@ -39,6 +39,7 @@ import { FirstAdminSetup } from './components/FirstAdminSetup';
 import { AdminLoginModal } from './components/AdminLoginModal';
 import { AdminWelcomeChecklistModal } from './components/AdminWelcomeChecklistModal';
 import { AIExplanationModal } from './components/AIExplanationModal';
+import { NewQCMModal } from './components/NewQCMModal';
 import {
   checkAdminStatus,
   getStoredAdminToken,
@@ -67,7 +68,7 @@ import {
 export default function App() {
   // App Config & Settings
   const [language, setLanguage] = useState<Language>('fr');
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
   const [role, setRole] = useState<UserRole>('student');
   const [isOffline, setIsOffline] = useState<boolean>(false);
   const [announcement, setAnnouncement] = useState<string>(
@@ -91,6 +92,7 @@ export default function App() {
   // Modals
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
+  const [isNewQCMModalOpen, setIsNewQCMModalOpen] = useState(false);
   const [selectedAIQuestion, setSelectedAIQuestion] = useState<MCQQuestion | null>(null);
 
   // Authenticated User State (Student)
@@ -153,20 +155,11 @@ export default function App() {
     answers: Record<string, number[]>;
   } | null>(null);
 
-  // Apply Theme Classes to Document
+  // Apply Theme Classes to Document (Exclusively Dark Mode)
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove('dark', 'theme-light', 'theme-dark', 'theme-pink', 'theme-royal-green');
-
-    if (theme === 'dark') {
-      root.classList.add('dark', 'theme-dark');
-    } else if (theme === 'pink') {
-      root.classList.add('theme-pink');
-    } else if (theme === 'royal-green') {
-      root.classList.add('theme-royal-green');
-    } else {
-      root.classList.add('theme-light');
-    }
+    root.classList.remove('theme-light', 'theme-pink', 'theme-royal-green');
+    root.classList.add('dark', 'theme-dark');
   }, [theme]);
 
   // Load Content from Backend
@@ -645,6 +638,7 @@ export default function App() {
         activeView={activeView}
         onNavigate={handleNavigate}
         onOpenSupport={() => setIsSupportModalOpen(true)}
+        onOpenNewQCM={() => setIsNewQCMModalOpen(true)}
         announcement={announcement}
       />
 
@@ -682,6 +676,7 @@ export default function App() {
             onStartQuiz={handleStartQuiz}
             onResetToStep={handleResetToStep}
             onDownloadLesson={handleDownloadLesson}
+            onOpenNewQCM={() => setIsNewQCMModalOpen(true)}
           />
         )}
 
@@ -860,6 +855,22 @@ export default function App() {
         language={language}
         isOpen={isSupportModalOpen}
         onClose={() => setIsSupportModalOpen(false)}
+      />
+
+      {/* Dedicated New QCM Creation Modal */}
+      <NewQCMModal
+        isOpen={isNewQCMModalOpen}
+        onClose={() => setIsNewQCMModalOpen(false)}
+        language={language}
+        professions={professions}
+        academicYears={academicYears}
+        modules={modules}
+        lessons={lessons}
+        initialProfessionId={selectedProfession?.id}
+        initialYearId={selectedYear?.id}
+        initialModuleId={selectedModule?.id}
+        initialLessonId={selectedLesson?.id}
+        onSaveQuestion={handleAdminAddQuestion}
       />
     </div>
   );

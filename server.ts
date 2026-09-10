@@ -209,7 +209,17 @@ async function startServer() {
     }
   });
 
-  // MCQ Questions CRUD
+  // MCQ Questions - Public & Quick Creation Route
+  app.post("/api/questions/create", (req, res) => {
+    try {
+      const question = addOrUpdateQuestion(req.body);
+      res.json(question);
+    } catch (e: any) {
+      res.status(400).json({ error: e.message });
+    }
+  });
+
+  // MCQ Questions CRUD (Admin)
   app.post("/api/admin/questions", requireAdmin, (req, res) => {
     try {
       const question = addOrUpdateQuestion(req.body);

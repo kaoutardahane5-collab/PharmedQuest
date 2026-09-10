@@ -14,7 +14,9 @@ import {
   Users,
   BarChart3,
   MessageSquare,
-  Sparkles
+  Sparkles,
+  Moon,
+  PlusCircle
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -30,6 +32,7 @@ interface HeaderProps {
   activeView: 'landing' | 'hierarchy' | 'quiz' | 'results' | 'analytics' | 'study-room' | 'messages' | 'admin';
   onNavigate: (view: 'hierarchy' | 'analytics' | 'study-room' | 'messages' | 'admin' | 'landing') => void;
   onOpenSupport: () => void;
+  onOpenNewQCM?: () => void;
   announcement?: string;
 }
 
@@ -46,6 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
   activeView,
   onNavigate,
   onOpenSupport,
+  onOpenNewQCM,
   announcement,
 }) => {
   const t = translations[language];
@@ -168,53 +172,28 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden sm:inline">{isOffline ? t.offlineMode : 'En ligne'}</span>
           </button>
 
-          {/* Theme Selector */}
-          <div className="relative flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-0.5 border border-slate-200 dark:border-slate-700">
-            <button
-              onClick={() => onThemeChange('light')}
-              title="Thème Clair"
-              className={`px-2 py-1 text-xs rounded-md transition-all ${
-                theme === 'light'
-                  ? 'bg-white text-teal-700 shadow-sm font-semibold dark:bg-slate-700 dark:text-white'
-                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
-              }`}
-            >
-              ☀️
-            </button>
-            <button
-              onClick={() => onThemeChange('dark')}
-              title="Thème Sombre"
-              className={`px-2 py-1 text-xs rounded-md transition-all ${
-                theme === 'dark'
-                  ? 'bg-slate-900 text-cyan-400 shadow-sm font-semibold'
-                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
-              }`}
-            >
-              🌙
-            </button>
-            <button
-              onClick={() => onThemeChange('pink')}
-              title="Thème Rose Médical"
-              className={`px-2 py-1 text-xs rounded-md transition-all ${
-                theme === 'pink'
-                  ? 'bg-pink-600 text-white shadow-sm font-semibold'
-                  : 'text-slate-600 hover:text-pink-600 dark:text-slate-400'
-              }`}
-            >
-              🌸
-            </button>
-            <button
-              onClick={() => onThemeChange('royal-green')}
-              title="Thème Vert Royal"
-              className={`px-2 py-1 text-xs rounded-md transition-all ${
-                theme === 'royal-green'
-                  ? 'bg-emerald-700 text-white shadow-sm font-semibold'
-                  : 'text-slate-600 hover:text-emerald-700 dark:text-slate-400'
-              }`}
-            >
-              🌿
-            </button>
+          {/* Dedicated Dark Mode Badge */}
+          <div 
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800/90 border border-slate-700 text-xs font-semibold text-cyan-400 shadow-inner"
+            title="Mode Sombre Actif"
+          >
+            <Moon className="w-3.5 h-3.5 fill-cyan-400/20 text-cyan-400" />
+            <span className="hidden md:inline">Mode Sombre</span>
           </div>
+
+          {/* Quick Action: Add New MCQ */}
+          {onOpenNewQCM && (
+            <button
+              type="button"
+              onClick={onOpenNewQCM}
+              className="flex items-center gap-1.5 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow-md hover:shadow-teal-500/20 active:scale-[0.98] transition-all"
+              title={language === 'fr' ? 'Rédiger et ajouter un nouveau QCM' : 'Add a new MCQ question'}
+            >
+              <PlusCircle className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">{language === 'fr' ? '+ Nouveau QCM' : '+ New MCQ'}</span>
+              <span className="sm:hidden">+ QCM</span>
+            </button>
+          )}
 
           {/* Language Toggle */}
           <div className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-0.5 border border-slate-200 dark:border-slate-700">
