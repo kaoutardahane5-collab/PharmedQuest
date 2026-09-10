@@ -97,6 +97,7 @@ export const SecureMessaging: React.FC<SecureMessagingProps> = ({
   const [activeConvId, setActiveConvId] = useState<string>('c1');
   const [inputText, setInputText] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [actionNotice, setActionNotice] = useState<string | null>(null);
 
   const activeConv = conversations.find((c) => c.id === activeConvId);
 
@@ -128,14 +129,13 @@ export const SecureMessaging: React.FC<SecureMessagingProps> = ({
   };
 
   const handleBlockUser = () => {
-    if (confirm(language === 'fr' ? 'Êtes-vous sûr de vouloir bloquer cet étudiant ? Vous ne recevrez plus de messages.' : 'Block this student?')) {
-      alert(language === 'fr' ? 'Utilisateur bloqué.' : 'User blocked.');
-    }
+    setActionNotice(language === 'fr' ? 'Utilisateur bloqué. Vous ne recevrez plus de messages.' : 'User blocked.');
+    setTimeout(() => setActionNotice(null), 4000);
   };
 
   const handleReportUser = () => {
-    prompt(language === 'fr' ? 'Veuillez préciser le motif du signalement pour l équipe de modération :' : 'State report reason:');
-    alert(language === 'fr' ? 'Signalement transmis à l administration.' : 'Report submitted.');
+    setActionNotice(language === 'fr' ? 'Signalement transmis à l administration.' : 'Report submitted to moderation.');
+    setTimeout(() => setActionNotice(null), 4000);
   };
 
   return (
@@ -154,6 +154,12 @@ export const SecureMessaging: React.FC<SecureMessagingProps> = ({
           </p>
         </div>
       </div>
+
+      {actionNotice && (
+        <div className="p-3 bg-teal-50 dark:bg-teal-950/50 border border-teal-200 dark:border-teal-800 rounded-xl text-xs text-teal-800 dark:text-teal-300 transition-all">
+          {actionNotice}
+        </div>
+      )}
 
       <div className="glass-panel rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs grid grid-cols-1 md:grid-cols-12 min-h-[500px]">
         {/* Left Side: Conversations List (4 cols) */}

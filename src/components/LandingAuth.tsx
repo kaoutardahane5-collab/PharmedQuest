@@ -34,6 +34,7 @@ export const LandingAuth: React.FC<LandingAuthProps> = ({
   const [password, setPassword] = useState('••••••••');
   const [isRegisterMode, setIsRegisterMode] = useState(false);
   const [name, setName] = useState('Dr. Amine Khelil');
+  const [resetNotice, setResetNotice] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -131,7 +132,7 @@ export const LandingAuth: React.FC<LandingAuthProps> = ({
                   <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 ml-1">
                     {t.password}
                   </label>
-                  <a href="#forgot" onClick={(e) => { e.preventDefault(); alert(language === 'fr' ? 'Un lien de réinitialisation sécurisé sera envoyé à votre adresse institutionnelle.' : 'A reset password link will be sent to your institutional address.'); }} className="text-teal-600 dark:text-teal-400 text-xs font-medium hover:underline">
+                  <a href="#forgot" onClick={(e) => { e.preventDefault(); setResetNotice(language === 'fr' ? 'Un lien de réinitialisation sécurisé a été préparé pour votre adresse institutionnelle.' : 'A secure password reset link has been queued for your institutional email.'); }} className="text-teal-600 dark:text-teal-400 text-xs font-medium hover:underline">
                     {t.forgotPassword}
                   </a>
                 </div>
@@ -143,6 +144,12 @@ export const LandingAuth: React.FC<LandingAuthProps> = ({
                   className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-teal-600 focus:border-transparent outline-none text-sm text-slate-900 dark:text-white transition-all"
                 />
               </div>
+
+              {resetNotice && (
+                <div className="p-3 bg-teal-50 dark:bg-teal-950/50 border border-teal-200 dark:border-teal-800 rounded-lg text-xs text-teal-800 dark:text-teal-300">
+                  {resetNotice}
+                </div>
+              )}
 
               <button
                 type="submit"

@@ -798,7 +798,7 @@ export default function App() {
             <button onClick={() => setIsSupportModalOpen(true)} className="hover:underline">
               {language === 'fr' ? 'Aide & Contact CCP' : 'Help & CCP'}
             </button>
-            <button onClick={() => alert('Conforme aux maquettes pédagogiques du Ministère de l Enseignement Supérieur (MESRS Algérie).')} className="hover:underline">
+            <button onClick={() => setIsSupportModalOpen(true)} className="hover:underline">
               {language === 'fr' ? 'Conformité MESRS' : 'Curriculum Compliance'}
             </button>
             <button onClick={() => setIsPaymentModalOpen(true)} className="text-teal-600 font-semibold hover:underline">

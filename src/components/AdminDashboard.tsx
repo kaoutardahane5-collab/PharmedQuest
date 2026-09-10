@@ -161,6 +161,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [qExplanationFr, setQExplanationFr] = useState<string>('');
   const [qExplanationEn, setQExplanationEn] = useState<string>('');
   const [qDifficulty, setQDifficulty] = useState<'easy' | 'medium' | 'hard'>('medium');
+  const [qFormError, setQFormError] = useState<string | null>(null);
 
   // Live Preview Modal
   const [previewQuestionData, setPreviewQuestionData] = useState<Partial<MCQQuestion> | null>(null);
@@ -320,15 +321,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   // Save Question
   const handleSaveQuestion = async (isDraft: boolean = false) => {
     if (!qTextFr.trim()) {
-      alert("Veuillez saisir l'énoncé du QCM.");
+      setQFormError("Veuillez saisir l'énoncé du QCM.");
       return;
     }
 
     const cleanOptions = qOptions.filter(o => o.trim().length > 0);
     if (cleanOptions.length < 2) {
-      alert("Veuillez saisir au moins 2 options de réponse.");
+      setQFormError("Veuillez saisir au moins 2 options de réponse.");
       return;
     }
+    setQFormError(null);
 
     const questionPayload: Partial<MCQQuestion> = {
       professionId: qProfession,
@@ -1708,6 +1710,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
             {/* Modal Body */}
             <div className="p-5 sm:p-6 overflow-y-auto space-y-4 flex-1">
+              {qFormError && (
+                <div className="p-3 bg-rose-950/60 border border-rose-800 text-rose-300 rounded-xl text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                  <span>{qFormError}</span>
+                </div>
+              )}
+
               {/* Hierarchy selections */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {/* Specialty */}

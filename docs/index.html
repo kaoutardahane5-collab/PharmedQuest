@@ -1,6 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
+    <script>
+      // 1. Instant Trailing-Slash Normalization:
+      // When hosting on GitHub Pages (e.g. https://username.github.io/reponame),
+      // accessing without a trailing slash causes relative URLs to resolve to the parent domain.
+      // Immediate redirection here guarantees correct asset resolution.
+      (function() {
+        var l = window.location;
+        var p = l.pathname;
+        if (p && !p.endsWith('/') && !p.split('/').pop().includes('.')) {
+          l.replace(l.protocol + '//' + l.host + p + '/' + l.search + l.hash);
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PharmedQuest - Medical & Pharmacy Examination Prep</title>
@@ -13,22 +26,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <script>
-      // 1. Enforce trailing slash on directory URLs so relative paths (./assets/...) resolve accurately
-      (function() {
-        var l = window.location;
-        var p = l.pathname;
-        if (!p.endsWith('/') && !p.split('/').pop().includes('.')) {
-          l.replace(l.protocol + '//' + l.host + p + '/' + l.search + l.hash);
-          return;
-        }
-        // 2. Set dynamic base tag so all relative assets (./assets/...) resolve against the current directory
-        var currentDir = p.endsWith('/') ? p : p.substring(0, p.lastIndexOf('/') + 1);
-        var baseTag = document.createElement('base');
-        baseTag.href = l.protocol + '//' + l.host + currentDir;
-        document.head.appendChild(baseTag);
-      })();
-    </script>
     
     <script type="module" crossorigin src="./assets/index.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index.css">
@@ -38,16 +35,45 @@
       <div id="pq-initial-loader" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8fafc; color: #0f172a; padding: 24px; text-align: center;">
         <div style="width: 44px; height: 44px; border: 3px solid #e2e8f0; border-top-color: #0d9488; border-radius: 50%; animation: pq-spin 0.75s linear infinite; margin-bottom: 16px;"></div>
         <h2 style="margin: 0 0 6px 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: #0f172a;">PharmedQuest DZ</h2>
-        <p style="margin: 0; font-size: 14px; color: #64748b;">Chargement de la plateforme d'apprentissage...</p>
-        <div id="pq-timeout-notice" style="display: none; margin-top: 18px;">
-          <p style="margin: 0 0 10px 0; font-size: 13px; color: #64748b;">Le chargement prend plus de temps que prévu.</p>
-          <button onclick="window.location.reload()" style="background: #0d9488; color: #ffffff; border: none; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">Recharger la page</button>
+        <p id="pq-status-msg" style="margin: 0; font-size: 14px; color: #64748b;">Chargement de la plateforme d'apprentissage...</p>
+        
+        <div id="pq-timeout-notice" style="display: none; margin-top: 18px; max-width: 380px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+          <p style="margin: 0 0 12px 0; font-size: 13px; color: #64748b; line-height: 1.5;">
+            Le chargement prend plus de temps que prévu.
+          </p>
+          <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+            <button onclick="window.location.reload()" style="background: #0d9488; color: #ffffff; border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+              Recharger la page
+            </button>
+            <button onclick="pqForceLaunch()" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;">
+              Ouvrir l'application
+            </button>
+          </div>
         </div>
         <script>
+          function pqForceLaunch() {
+            var possiblePaths = [
+              './assets/index.js',
+              'assets/index.js',
+              './docs/assets/index.js',
+              './dist/assets/index.js'
+            ];
+            possiblePaths.forEach(function(src) {
+              var s = document.createElement('script');
+              s.type = 'module';
+              s.crossOrigin = 'anonymous';
+              s.src = src + '?t=' + Date.now();
+              document.head.appendChild(s);
+            });
+          }
+
           setTimeout(function() {
-            var el = document.getElementById('pq-timeout-notice');
-            if (el) el.style.display = 'block';
-          }, 4000);
+            if (!window.__pq_mounted) {
+              var el = document.getElementById('pq-timeout-notice');
+              if (el) el.style.display = 'block';
+              pqForceLaunch();
+            }
+          }, 3500);
         </script>
         <style>@keyframes pq-spin { to { transform: rotate(360deg); } }</style>
       </div>

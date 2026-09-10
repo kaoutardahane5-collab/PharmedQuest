@@ -16,8 +16,13 @@
         // Determine repo base on GitHub Pages
         var segments = l.pathname.split('/').filter(Boolean);
         var isGhPages = l.hostname.endsWith('github.io');
-        var repoName = (isGhPages && segments.length > 0 && !l.hostname.startsWith(segments[0])) ? segments[0] : '';
-        var repoBase = repoName ? ('/' + repoName) : '';
+        var repoBase = '';
+        if (isGhPages && segments.length > 0) {
+          var userPrefix = l.hostname.split('.')[0];
+          if (segments[0].toLowerCase() !== userPrefix.toLowerCase() + '.github.io') {
+            repoBase = '/' + segments[0];
+          }
+        }
 
         var target = l.origin + repoBase + '/';
         window.location.replace(target);
