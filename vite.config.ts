@@ -68,22 +68,33 @@ function githubPagesPlugin(): Plugin {
   return {
     name: 'vite-plugin-github-pages',
     transformIndexHtml(html) {
-      return html.replace(
-        /<!-- GH_PAGES_ROOT_REDIRECT_START -->[\s\S]*?<!-- GH_PAGES_ROOT_REDIRECT_END -->/,
-        ''
-      );
+      return html
+        .replace(
+          /<!-- GH_PAGES_STATIC_LOADER_START -->[\s\S]*?<!-- GH_PAGES_STATIC_LOADER_END -->/,
+          ''
+        )
+        .replace(
+          /<!-- GH_PAGES_ROOT_REDIRECT_START -->[\s\S]*?<!-- GH_PAGES_ROOT_REDIRECT_END -->/,
+          ''
+        );
     },
   };
 }
 
 export default defineConfig(() => {
-  const repoName = process.env.GITHUB_REPOSITORY
-    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
-    : './';
-
   return {
-    base: process.env.GITHUB_ACTIONS ? repoName : './',
+    base: './',
     plugins: [react(), tailwindcss(), aistudioMediaPlugin(), githubPagesPlugin()],
+    build: {
+      outDir: 'dist',
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/index.js',
+          chunkFileNames: 'assets/[name].js',
+          assetFileNames: 'assets/[name].[ext]',
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

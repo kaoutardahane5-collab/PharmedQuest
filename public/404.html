@@ -3,24 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PharmedQuest - Medical & Pharmacy Examination Prep</title>
+    <title>PharmedQuest DZ</title>
     <script>
-      // Single Page Apps for GitHub Pages
-      // Redirects 404 requests back to the repository base index.html
-      var pathSegmentsToKeep = 1;
-      var l = window.location;
-      var repoBase = l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/');
-      // Fallback redirect
-      window.location.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        repoBase + '/?' +
-        (l.pathname.slice(repoBase.length).replace(/^[\\\/]/, '')) +
-        (l.search ? '&' + l.search.slice(1) : '') +
-        l.hash
-      );
+      (function() {
+        var l = window.location;
+        // Do not redirect static assets or files with extensions (.js, .css, .png, etc.)
+        var lastPart = l.pathname.split('/').pop();
+        if (lastPart && lastPart.indexOf('.') !== -1 && !lastPart.endsWith('.html')) {
+          return;
+        }
+
+        // Determine repo base on GitHub Pages
+        var segments = l.pathname.split('/').filter(Boolean);
+        var isGhPages = l.hostname.endsWith('github.io');
+        var repoName = (isGhPages && segments.length > 0 && !l.hostname.startsWith(segments[0])) ? segments[0] : '';
+        var repoBase = repoName ? ('/' + repoName) : '';
+
+        var target = l.origin + repoBase + '/';
+        window.location.replace(target);
+      })();
     </script>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #f8fafc;
+        color: #0f172a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 24px;
+      }
+      .card {
+        background: #ffffff;
+        padding: 32px;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e2e8f0;
+        max-width: 400px;
+        width: 100%;
+      }
+      h1 { margin: 0 0 8px 0; font-size: 20px; font-weight: 700; color: #0f172a; }
+      p { margin: 0 0 20px 0; font-size: 14px; color: #64748b; line-height: 1.5; }
+      a { display: inline-block; padding: 10px 20px; background: #0d9488; color: #ffffff; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; }
+    </style>
   </head>
   <body>
-    <p>Redirection en cours vers PharmedQuest...</p>
+    <div class="card">
+      <h1>PharmedQuest DZ</h1>
+      <p>Redirection vers la plateforme d'apprentissage en cours...</p>
+      <a href="./">Accéder à l'accueil</a>
+    </div>
   </body>
 </html>
